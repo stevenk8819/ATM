@@ -10,6 +10,12 @@ public class ATMTest {
 		System.out.println (t.getA().get(40)); 
 		t.withdrawMoney(40,20.0);
 		System.out.println (t.getA().get(40)); 
+		System.out .println (t.checkBalance(5)); 
+		t.closeAccount(40);
+		System.out .println (t.checkBalance(40));
+		t.withdrawMoney(40,10.0);
+		t.closeAccount(40); 
+		System.out .println (t.checkBalance(40));
 		
 	}
 	public ATMTest () {
@@ -26,7 +32,7 @@ public class ATMTest {
 	}
 	public void closeAccount(int accNumber) {
 		double d = acc.get(accNumber); 
-		if (d < 0.0) {
+		if (d == 0.0) {
 			acc.remove(accNumber); 
 		}
 	}
