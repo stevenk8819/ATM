@@ -1,21 +1,25 @@
 import java.util.*;
+import java.math.*; 
+import java.text.DecimalFormat;
 public class ATMTest {
 
-	HashMap<Integer, Double> acc; 
+	private HashMap<Integer, Double> acc; 
+	private static final DecimalFormat df = new DecimalFormat("0.00");
+	 
 	public static void main (String [] monkeyMONKEYmonkey)
 	{
-		ATMTest t = new ATMTest(); 
-		t.openAccount(40); 
-		t.depositMoney(40,30.0); 
-		System.out.println (t.getA().get(40)); 
-		t.withdrawMoney(40,20.0);
-		System.out.println (t.getA().get(40)); 
-		System.out .println (t.checkBalance(5)); 
-		t.closeAccount(40);
-		System.out .println (t.checkBalance(40));
-		t.withdrawMoney(40,10.0);
-		t.closeAccount(40); 
-		System.out .println (t.checkBalance(40));
+//		ATMTest t = new ATMTest(); 
+//		t.openAccount(40); 
+//		t.depositMoney(40,30.0); 
+//		System.out.println (t.getA().get(40)); 
+//		t.withdrawMoney(40,20.0);
+//		System.out.println (t.getA().get(40)); 
+//		System.out .println (t.checkBalance(5)); 
+//		t.closeAccount(40);
+//		System.out .println (t.checkBalance(40));
+//		t.withdrawMoney(40,10.0);
+//		t.closeAccount(40); 
+//		System.out .println (t.checkBalance(40));
 		
 	}
 	public ATMTest () {
@@ -38,13 +42,21 @@ public class ATMTest {
 	}
 	public double checkBalance(int acc1) {
 		if (acc.containsKey(acc1)) {
-			return acc.get(acc1); 
+			double temp = acc.get(acc1); 
+			String s = df.format(temp); 
+//			System.out.println (s); 
+			return Double.parseDouble(s); 
+			  
+			
 		}
 		else {
 			return 0.0; 
 		}
 	}
 	public void depositMoney(int num, double dep) {
+		if (num<=0) {
+			return; 
+		}
 		if (acc.containsKey(num)) {
 			double temp = acc.get(num); 
 			temp += dep; 
@@ -52,6 +64,9 @@ public class ATMTest {
 		}
 	}
 	public void withdrawMoney(int num, double with) {
+		if (with < 0) {
+			return; 
+		}
 		if (acc.containsKey(num)) {
 			double temp = acc.get(num); 
 			if (with>temp) {
