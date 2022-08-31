@@ -1,7 +1,7 @@
 import java.util.*;
 import java.math.*; 
 import java.text.DecimalFormat;
-public class ATMTest {
+public class ATM {
 
 	private HashMap<Integer, Double> acc; 
 	private static final DecimalFormat df = new DecimalFormat("0.00");
@@ -22,7 +22,7 @@ public class ATMTest {
 //		System.out .println (t.checkBalance(40));
 		
 	}
-	public ATMTest () {
+	public ATM () {
 		acc = new HashMap<Integer, Double>(); 
 	}
 	private HashMap<Integer, Double> getA() {
@@ -70,7 +70,7 @@ public class ATMTest {
 		if (acc.containsKey(num)) {
 			double temp = acc.get(num); 
 			if (with>temp) {
-				System.out.println ("YOU'RE BROKE HOMIE"); 
+//				System.out.println ("YOU'RE BROKE HOMIE"); 
 				return; 
 			}
 			temp -= with; 

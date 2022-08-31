@@ -3,7 +3,7 @@ public class ATMTester {
 
 	public static void main(String[] args) {
 
-		ATMTest chase = new ATMTest();
+		ATM chase = new ATM();
 		
 		// Open accounts
 		chase.openAccount(00001);
